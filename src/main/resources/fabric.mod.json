@@ -1,0 +1,39 @@
+{
+	"schemaVersion": 1,
+	"id": "jabsfixedenchanting",
+	"version": "${version}",
+	"name": "Jabs Fixed Enchanting",
+	"description": "I Fixed Enchanting",
+	"authors": [
+		"Green_Jab"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/jabsfixedenchanting/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.greenjab.jabsfixedenchanting.JabsFixedEnchanting"
+		],
+		"client": [
+			"net.greenjab.jabsfixedenchanting.client.JabsFixedEnchantingClient"
+		]
+	},
+	"mixins": [
+		"jabsfixedenchanting.mixins.json",
+		{
+			"config": "jabsfixedenchanting.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "0.151.0+26.1.2"
+	},
+	"accessWidener" : "jabsfixedenchanting.accesswidener"
+}
