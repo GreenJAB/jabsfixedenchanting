@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+        "model": "jabsfixedenchanting:block/chipped_netherite_anvil",
+      "y": 270
+    },
+    "facing=north": {
+        "model": "jabsfixedenchanting:block/chipped_netherite_anvil",
+      "y": 180
+    },
+    "facing=south": {
+        "model": "jabsfixedenchanting:block/chipped_netherite_anvil"
+    },
+    "facing=west": {
+        "model": "jabsfixedenchanting:block/chipped_netherite_anvil",
+      "y": 90
+    }
+  }
+}

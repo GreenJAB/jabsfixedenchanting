@@ -1,0 +1,6 @@
+{
+    "parent": "jabsfixedenchanting:block/template_netherite_anvil",
+  "textures": {
+      "top": "jabsfixedenchanting:block/netherite_anvil_top"
+  }
+}

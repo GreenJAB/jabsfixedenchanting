@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "jabsfixedenchanting:netherite_anvil",
+        "jabsfixedenchanting:chipped_netherite_anvil",
+        "jabsfixedenchanting:damaged_netherite_anvil"
+    ]
+}
