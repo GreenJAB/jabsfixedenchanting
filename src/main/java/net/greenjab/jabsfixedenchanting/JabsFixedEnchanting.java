@@ -33,7 +33,6 @@ public class JabsFixedEnchanting implements ModInitializer {
 		LootTableRegistry.registerLootTable();
 		ParticleRegistry.registerParticles();
 		MenuRegistry.registerMenus();
-		TextureModificationRegistry.registerTextureModifications();
 	}
 
 	public static ArrayList<ItemStack> getArmor(LivingEntity entity) {
@@ -50,4 +49,4 @@ public class JabsFixedEnchanting implements ModInitializer {
 	}
 }
 
-//TODO archeaology enchanting
+//TODO archeaology/fishing enchanting

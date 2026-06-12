@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class ItemGroupRegistry {
 
-    public static final CreativeModeTab FIXED = FabricCreativeModeTab.builder().title(Component.translatable("itemgroup.jabsfixedenchanting"))
+    public static final CreativeModeTab JABS_FIXED_ENCHANTING = FabricCreativeModeTab.builder().title(Component.translatable("itemgroup.jabsfixedenchanting"))
             .icon( () -> new ItemStack(ItemRegistry.NETHERITE_ANVIL))
             .displayItems(
                      (_, entries) -> {
@@ -21,6 +21,6 @@ public class ItemGroupRegistry {
 
     public static void registerItemGroups() {
         System.out.println("register Item Groups");
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, "fixed", FIXED);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, "jabs_fixed_enchanting", JABS_FIXED_ENCHANTING);
     }
 }
