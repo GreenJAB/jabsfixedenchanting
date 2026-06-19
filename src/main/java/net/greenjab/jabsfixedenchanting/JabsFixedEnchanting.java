@@ -27,9 +27,9 @@ public class JabsFixedEnchanting implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Initializing " + MOD_NAME);
 
+		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();
 		ItemGroupRegistry.registerItemGroups();
-		BlockRegistry.registerBlocks();
 		LootTableRegistry.registerLootTable();
 		ParticleRegistry.registerParticles();
 		MenuRegistry.registerMenus();
@@ -49,4 +49,4 @@ public class JabsFixedEnchanting implements ModInitializer {
 	}
 }
 
-//TODO archeaology/fishing enchanting
+//TODO archeaology/fishing/shipwreck/netherbridge enchanting

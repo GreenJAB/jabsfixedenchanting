@@ -18,7 +18,5 @@
     "container.anvil.repair": "Repair Cost: %s",
     "container.anvil.cost": "Enchant Cost: %s",
     "advancements.nether.repair_super_gear.title": "Master Craftsmanship",
-    "advancements.nether.repair_super_gear.description": "Repair Super Enchanted Gear within a Netherite Anvil",
-    "advancements.adventure.level_100.title": "Level Up",
-    "advancements.adventure.level_100.description": "Reach Level 100"
+    "advancements.nether.repair_super_gear.description": "Repair Super Enchanted Gear within a Netherite Anvil"
 }
