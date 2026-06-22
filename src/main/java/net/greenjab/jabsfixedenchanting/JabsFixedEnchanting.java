@@ -33,6 +33,7 @@ public class JabsFixedEnchanting implements ModInitializer {
 		LootTableRegistry.registerLootTable();
 		ParticleRegistry.registerParticles();
 		MenuRegistry.registerMenus();
+		LootTableAdditions.registerLootTableAdds();
 	}
 
 	public static ArrayList<ItemStack> getArmor(LivingEntity entity) {

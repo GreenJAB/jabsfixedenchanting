@@ -133,7 +133,7 @@
                     "functions": [
                         {
                             "function": "minecraft:enchant_randomly",
-                            "options": "#jabsfixedenchanting:loot/trial_chamber"
+                            "options": "#jabsfixedenchanting:other/trial_chamber"
                         }
                     ],
                     "name": "minecraft:book",
