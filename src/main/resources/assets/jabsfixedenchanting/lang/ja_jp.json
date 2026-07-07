@@ -1,0 +1,22 @@
+{
+    "jabsfixedenchanting.re_covered": "Re-Covered Enchanted Books",
+    "itemgroup.jabsfixedenchanting": "Fixed",
+    "block.jabsfixedenchanting.netherite_anvil": "ネザライトの金床",
+    "block.jabsfixedenchanting.chipped_netherite_anvil": "欠けたネザライトの金床",
+    "block.jabsfixedenchanting.damaged_netherite_anvil": "壊れかけのネザライトの金床",
+    "container.grindstone.break_item": "このアイテムは破壊されます",
+    "container.anvil": "修理・エンチャント",
+    "container.netherite_anvil": "修理・エンチャント (ネザライト)",
+    "container.anvil.fixed": "アイテムは壊れていません",
+    "container.anvil.combine": "アイテムを合成できません",
+    "container.anvil.enchant": "エンチャントを追加できません",
+    "container.anvil.mending": "修繕を追加できません",
+    "container.anvil.super": "スーパーエンチャントが付与されています",
+    "container.anvil.over": "オーバーエンチャントされています",
+    "container.anvil.change": "変更はありません",
+    "container.anvil.name": "名付けコスト: %s",
+    "container.anvil.repair": "修理コスト: %s",
+    "container.anvil.cost": "エンチャントコスト: %s",
+    "advancements.nether.repair_super_gear.title": "匠の技",
+    "advancements.nether.repair_super_gear.description": "ネザライトの金床で超エンチャント装備を修理する"
+}

@@ -1,0 +1,22 @@
+{
+    "jabsfixedenchanting.re_covered": "Ny-omslegne galdrebøker",
+    "itemgroup.jabsfixedenchanting": "Fiksa",
+    "block.jabsfixedenchanting.netherite_anvil": "Netherittsmieste",
+    "block.jabsfixedenchanting.chipped_netherite_anvil": "Sprokke netherittsmieste",
+    "block.jabsfixedenchanting.damaged_netherite_anvil": "Skadd netherittsmieste",
+    "container.grindstone.break_item": "Gjenstand vil ødelegges",
+    "container.anvil": "Reparer og galdra",
+    "container.netherite_anvil": "Reparer og galdra (N)",
+    "container.anvil.fixed": "Gjenstand ikkje øydelagt",
+    "container.anvil.combine": "Kan ikkje sameina gjenstandar",
+    "container.anvil.enchant": "Kan ikkje leggja til galdring",
+    "container.anvil.mending": "Kan ikkje leggja til vøling",
+    "container.anvil.super": "Har supergaldring",
+    "container.anvil.over": "Overgaldra",
+    "container.anvil.change": "Ingenting endra seg",
+    "container.anvil.name": "Nytt navn-kostnad: %s",
+    "container.anvil.repair": "Reparasjonskostnad: %s",
+    "container.anvil.cost": "Galdrekostnad: %s",
+    "advancements.nether.repair_super_gear.title": "Meisterleg handverk",
+    "advancements.nether.repair_super_gear.description": "Reparer utstyr i eit netherittsmieste"
+}
