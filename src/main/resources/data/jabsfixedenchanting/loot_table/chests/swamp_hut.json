@@ -156,7 +156,7 @@
                     "functions": [
                         {
                             "function": "minecraft:enchant_randomly",
-                            "options": "#jabsfixedenchanting:loot/swamp_hut"
+                            "options": "#jabsfixedenchanting:chest/swamp_hut"
                         }
                     ]
                 }

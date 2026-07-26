@@ -1,40 +1,41 @@
 {
-	"required": true,
-	"package": "net.greenjab.jabsfixedenchanting.mixin",
-	"compatibilityLevel": "JAVA_25",
-	"mixins": [
-		"ArmorMaterialMixin",
-		"ItemMixin",
-		"ItemsMixin",
-		"LivingEntityMixin",
-		"MobMixin",
-		"enchanting.AbstractContainerMenuMixin",
-		"enchanting.AnvilBlockMixin",
-		"enchanting.BlockEntityMixin",
-		"enchanting.ChiseledBookshelfBlockEntityMixin",
-		"enchanting.ChiseledBookshelfBlockInvoker",
-		"enchanting.CombatRulesMixin",
-		"enchanting.EnchantCommandMixin",
-		"enchanting.EnchantingTableBlockMixin",
-		"enchanting.EnchantmentHelperMixin",
-		"enchanting.EnchantmentMixin",
-		"enchanting.EnchantRandomlyFunctionMixin",
-		"enchanting.EnchantWithLevelsFunctionMixin",
-		"enchanting.GrindstoneMenuMixin",
-		"enchanting.GrindstoneMenuSlotMixin",
-		"enchanting.ItemEnchantmentsMixin",
-		"enchanting.ItemStackMixin",
-		"enchanting.PlayerMixin",
-		"enchanting.ServerGamePacketListenerImplMixin",
-		"enchanting.ToolMaterialMixin",
-		"structure.StrongholdPieceLibraryMixin",
-		"structure.SwampHutPieceMixin",
-		"util.MinecraftServerMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+  "required": true,
+  "package": "net.greenjab.jabsfixedenchanting.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "ArmorMaterialMixin",
+    "ItemMixin",
+    "ItemsMixin",
+    "LivingEntityMixin",
+    "MobMixin",
+    "enchanting.AbstractContainerMenuMixin",
+    "enchanting.AnvilBlockMixin",
+    "enchanting.AttributesMixin",
+    "enchanting.BlockEntityMixin",
+    "enchanting.ChiseledBookshelfBlockEntityMixin",
+    "enchanting.ChiseledBookshelfBlockInvoker",
+    "enchanting.CombatRulesMixin",
+    "enchanting.EnchantCommandMixin",
+    "enchanting.EnchantingTableBlockMixin",
+    "enchanting.EnchantmentHelperMixin",
+    "enchanting.EnchantmentMixin",
+    "enchanting.EnchantRandomlyFunctionMixin",
+    "enchanting.EnchantWithLevelsFunctionMixin",
+    "enchanting.GrindstoneMenuMixin",
+    "enchanting.GrindstoneMenuSlotMixin",
+    "enchanting.ItemEnchantmentsMixin",
+    "enchanting.ItemStackMixin",
+    "enchanting.PlayerMixin",
+    "enchanting.ServerGamePacketListenerImplMixin",
+    "enchanting.ToolMaterialMixin",
+    "structure.StrongholdPieceLibraryMixin",
+    "structure.SwampHutPieceMixin",
+    "util.MinecraftServerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
 	}
 }

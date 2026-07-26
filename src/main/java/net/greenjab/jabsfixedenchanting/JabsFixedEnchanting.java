@@ -7,21 +7,16 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class JabsFixedEnchanting implements ModInitializer {
 	public static final String NAMESPACE = "jabsfixedenchanting";
 	public static final String MOD_NAME = "Jabs Fixed Enchanting";
 	public static final Logger LOGGER = LoggerFactory.getLogger(NAMESPACE);
 	public static MinecraftServer SERVER = null;
-
-	public static HashMap<Item, Integer> ItemCapacities = new HashMap<>();
 
 	@Override
 	public void onInitialize() {
@@ -30,6 +25,7 @@ public class JabsFixedEnchanting implements ModInitializer {
 		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();
 		ItemGroupRegistry.registerItemGroups();
+		GameRuleRegistry.registerGameRules();
 		LootTableRegistry.registerLootTable();
 		ParticleRegistry.registerParticles();
 		MenuRegistry.registerMenus();
@@ -49,5 +45,3 @@ public class JabsFixedEnchanting implements ModInitializer {
 		return Identifier.fromNamespaceAndPath(NAMESPACE, path);
 	}
 }
-
-//TODO archeaology/fishing/shipwreck/netherbridge enchanting

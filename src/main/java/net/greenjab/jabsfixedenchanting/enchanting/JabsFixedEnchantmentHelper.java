@@ -3,6 +3,7 @@ package net.greenjab.jabsfixedenchanting.enchanting;
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.greenjab.jabsfixedenchanting.JabsFixedEnchanting;
+import net.greenjab.jabsfixedenchanting.registry.registries.GameRuleRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -25,6 +26,8 @@ import java.util.*;
 
 public class JabsFixedEnchantmentHelper {
 
+    public static HashMap<Item, Integer> ItemCapacities = new HashMap<>();
+    private static int lastCapacity = 0;
     public static final int POWER_WHEN_MAX_LEVEL = 12;
 
     public static int getEnchantmentPower(Holder<Enchantment> enchantment, int level) {
@@ -42,14 +45,18 @@ public class JabsFixedEnchantmentHelper {
 
     public static int getEnchantmentCapacity(ItemStack itemStack) {
         Item item = itemStack.getItem();
-        if (!JabsFixedEnchanting.ItemCapacities.containsKey(item))
+        if (lastCapacity != JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.ENCHANT_CAPACITY_PERCENTAGE)) {
+            lastCapacity = JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.ENCHANT_CAPACITY_PERCENTAGE);
+            ItemCapacities = new HashMap<>(Map.of());
+        }
+        if (!ItemCapacities.containsKey(item))
             if (JabsFixedEnchanting.SERVER!=null) {
                 HashMap<Item, Integer> map = new HashMap<>(Map.of());
-                map.putAll(JabsFixedEnchanting.ItemCapacities);
+                map.putAll(ItemCapacities);
                 map.put(item, getNewEnchantmentCapacity(itemStack));
-                JabsFixedEnchanting.ItemCapacities = map;
+                ItemCapacities = map;
             }
-        return JabsFixedEnchanting.ItemCapacities.getOrDefault(item, 0);
+        return ItemCapacities.getOrDefault(item, 0);
     }
 
     public static int getNewEnchantmentCapacity(ItemStack itemStack) {
@@ -61,7 +68,7 @@ public class JabsFixedEnchantmentHelper {
             power += JabsFixedEnchantmentHelper.getEnchantmentPower(enchantmentLevelEntry.enchantment(), enchantmentLevelEntry.level());
         }
         boolean isGold = itemStack.is(ItemTags.PIGLIN_LOVED);
-        return Math.min(Mth.ceil(power*(isGold?0.75f:0.54f)), 50);
+        return Math.min(Mth.ceil(power*(isGold?1f:JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.ENCHANT_CAPACITY_PERCENTAGE)/100f)), 50);
     }
 
     public static List<EnchantmentInstance> getPossibleEntries(ItemStack stack) {
@@ -126,6 +133,7 @@ public class JabsFixedEnchantmentHelper {
     }
 
     public static ItemStack applySuperEnchants(ItemStack IS, RandomSource random, boolean pale) {
+        if (JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.SUPER_ENCHANT_CHANCE)==0) return IS;
         if (!IS.is(Items.ENCHANTED_BOOK)) {
             ItemStack IS2 = IS.getItem().getDefaultInstance();
             ItemEnchantments map = EnchantmentHelper.getEnchantmentsForCrafting(IS);
@@ -137,7 +145,7 @@ public class JabsFixedEnchantmentHelper {
                 Enchantment e = registryEntry.value();
                 int i = entry.getIntValue();
                 if (e.getMaxLevel() != 1) {
-                    if (random.nextFloat() < (pale?0.15f:0.05f)) {
+                    if (random.nextFloat() < JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.SUPER_ENCHANT_CHANCE)+(pale?0.10:0)) {
                         i = e.getMaxLevel() + 1;
                         isSuper = true;
                     }
@@ -145,7 +153,7 @@ public class JabsFixedEnchantmentHelper {
                 builder.set(registryEntry, i);
             }
 
-            if (isSuper) {
+            if (isSuper && !JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.MENDING_ON_OP_ITEMS)) {
                 IS2.set(DataComponents.REPAIR_COST, 1);
                 ItemEnchantments outputEnchants = EnchantmentHelper.getEnchantmentsForCrafting(IS2);
                 for (Object2IntMap.Entry<Holder<Enchantment>> entry : outputEnchants.entrySet()) {
