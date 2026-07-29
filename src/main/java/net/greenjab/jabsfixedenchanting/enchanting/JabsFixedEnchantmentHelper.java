@@ -145,7 +145,7 @@ public class JabsFixedEnchantmentHelper {
                 Enchantment e = registryEntry.value();
                 int i = entry.getIntValue();
                 if (e.getMaxLevel() != 1) {
-                    if (random.nextFloat() < JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.SUPER_ENCHANT_CHANCE)+(pale?0.10:0)) {
+                    if (random.nextFloat() < JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.SUPER_ENCHANT_CHANCE)/100.0+(pale?0.10:0)) {
                         i = e.getMaxLevel() + 1;
                         isSuper = true;
                     }
@@ -153,21 +153,15 @@ public class JabsFixedEnchantmentHelper {
                 builder.set(registryEntry, i);
             }
 
-            if (isSuper && !JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.MENDING_ON_OP_ITEMS)) {
+            if (isSuper) {
                 IS2.set(DataComponents.REPAIR_COST, 1);
-                ItemEnchantments outputEnchants = EnchantmentHelper.getEnchantmentsForCrafting(IS2);
-                for (Object2IntMap.Entry<Holder<Enchantment>> entry : outputEnchants.entrySet()) {
-                    Holder<Enchantment> registryEntry = entry.getKey();
-                    if (registryEntry.equals(Enchantments.MENDING)) {
-                        builder.set(registryEntry, 0);
-                    }
+                if (!JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.MENDING_ON_OP_ITEMS)) {
+                    builder.removeIf(e -> e.is(Enchantments.MENDING));
                 }
             }
             EnchantmentHelper.setEnchantments(IS2, builder.toImmutable());
             return IS2;
-        } else {
-            return IS;
-        }
+        } else return IS;
     }
 
     public static int enchantLevel(ItemStack stack, String name) {

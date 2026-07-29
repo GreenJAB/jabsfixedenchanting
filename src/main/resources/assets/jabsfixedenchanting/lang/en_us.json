@@ -31,5 +31,5 @@
     "gamerule.jabsfixedenchanting.mending_on_op_items": "Allow Mending on Overpowered Items",
     "gamerule.jabsfixedenchanting.mending_on_op_items.description": "When an item is over capacity or has super enchants",
     "gamerule.jabsfixedenchanting.enchant_capacity_percentage": "Enchant Capacity Percentage",
-    "gamerule.jabsfixedenchanting.enchant_capacity_percentage.description": "Rather than the anvil cap of 40, capacity is proportional to how many enchants an item could have, capped at 50"
+    "gamerule.jabsfixedenchanting.enchant_capacity_percentage.description": "Rather than the anvil cap of 40, capacity is a percentage of how many enchants an item could have, capped at 50 Levels"
 }
