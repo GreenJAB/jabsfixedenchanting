@@ -11,12 +11,11 @@
     "container.anvil.combine": "アイテムを合成できません",
     "container.anvil.enchant": "エンチャントを追加できません",
     "container.anvil.mending": "修繕を追加できません",
-    "container.anvil.super": "スーパーエンチャントが付与されています",
     "container.anvil.over": "オーバーエンチャントされています",
     "container.anvil.change": "変更はありません",
     "container.anvil.name": "名付けコスト: %s",
     "container.anvil.repair": "修理コスト: %s",
     "container.anvil.cost": "エンチャントコスト: %s",
-    "advancements.nether.repair_super_gear.title": "匠の技",
-    "advancements.nether.repair_super_gear.description": "ネザライトの金床で超エンチャント装備を修理する"
+    "advancements.nether.repair_over_gear.title": "匠の技",
+    "advancements.nether.repair_over_gear.description": "ネザライトの金床で超エンチャント装備を修理する"
 }

@@ -2,6 +2,6 @@
     "block.jabsfixedenchanting.netherite_anvil": "下界合金铁砧",
     "block.jabsfixedenchanting.chipped_netherite_anvil": "开裂的下界合金铁砧",
     "block.jabsfixedenchanting.damaged_netherite_anvil": "损坏的下界合金铁砧",
-    "advancements.nether.repair_super_gear.title": "精湛工艺",
-    "advancements.nether.repair_super_gear.description": "在下界合金铁砧中修复高阶附魔装备"
+    "advancements.nether.repair_over_gear.title": "精湛工艺",
+    "advancements.nether.repair_over_gear.description": "在下界合金铁砧中修复高阶附魔装备"
 }

@@ -11,12 +11,11 @@
     "container.anvil.combine": "Kan ikke kombinere gjenstander",
     "container.anvil.enchant": "Kan ikke legge til trolldom",
     "container.anvil.mending": "Kan ikke legge til bøting",
-    "container.anvil.super": "Har supertrolldom",
     "container.anvil.over": "Overfortryllet",
     "container.anvil.change": "Ingenting endret seg",
     "container.anvil.name": "Nytt navn-kostnad: %s",
     "container.anvil.repair": "Reparasjonskostnad: %s",
     "container.anvil.cost": "Fortryllingskostnad: %s",
-    "advancements.nether.repair_super_gear.title": "Mesterlig håndverk",
-    "advancements.nether.repair_super_gear.description": "Reparer utstyr i en netheritt-ambolt"
+    "advancements.nether.repair_over_gear.title": "Mesterlig håndverk",
+    "advancements.nether.repair_over_gear.description": "Reparer utstyr i en netheritt-ambolt"
 }

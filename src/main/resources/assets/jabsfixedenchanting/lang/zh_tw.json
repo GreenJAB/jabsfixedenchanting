@@ -2,6 +2,6 @@
     "block.jabsfixedenchanting.netherite_anvil": "獄髓鐵砧",
     "block.jabsfixedenchanting.chipped_netherite_anvil": "微損的獄髓鐵砧",
     "block.jabsfixedenchanting.damaged_netherite_anvil": "耗損的獄髓鐵砧",
-    "advancements.nether.repair_super_gear.title": "精湛工藝",
-    "advancements.nether.repair_super_gear.description": "在獄髓鐵砧中修復高階附魔裝備"
+    "advancements.nether.repair_over_gear.title": "精湛工藝",
+    "advancements.nether.repair_over_gear.description": "在獄髓鐵砧中修復高階附魔裝備"
 }

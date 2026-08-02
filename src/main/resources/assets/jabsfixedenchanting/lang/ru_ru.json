@@ -2,6 +2,6 @@
     "block.jabsfixedenchanting.netherite_anvil": "Незеритовая наковальня",
     "block.jabsfixedenchanting.chipped_netherite_anvil": "Повреждённая незеритовая наковальня",
     "block.jabsfixedenchanting.damaged_netherite_anvil": "Разбитая незеритовая наковальня",
-    "advancements.nether.repair_super_gear.title": "Дело мастера боится",
-    "advancements.nether.repair_super_gear.description": "Почините суперзачарованный предмет на незеритовой наковальне"
+    "advancements.nether.repair_over_gear.title": "Дело мастера боится",
+    "advancements.nether.repair_over_gear.description": "Почините суперзачарованный предмет на незеритовой наковальне"
 }

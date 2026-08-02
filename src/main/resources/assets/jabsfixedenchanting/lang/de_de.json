@@ -2,6 +2,6 @@
     "block.jabsfixedenchanting.netherite_anvil": "Netherite Amboss",
     "block.jabsfixedenchanting.chipped_netherite_anvil": "Angebrochener Netherite Amboss",
     "block.jabsfixedenchanting.damaged_netherite_anvil": "Beschädigter Netherite Amboss",
-    "advancements.nether.repair_super_gear.title": "Meisterhafte Handwerkskunst",
-    "advancements.nether.repair_super_gear.description": "Repariere etwas im Netherite Amboss"
+    "advancements.nether.repair_over_gear.title": "Meisterhafte Handwerkskunst",
+    "advancements.nether.repair_over_gear.description": "Repariere etwas im Netherite Amboss"
 }

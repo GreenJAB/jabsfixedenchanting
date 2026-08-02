@@ -11,12 +11,11 @@
     "container.anvil.combine": "Kan ikkje sameina gjenstandar",
     "container.anvil.enchant": "Kan ikkje leggja til galdring",
     "container.anvil.mending": "Kan ikkje leggja til vøling",
-    "container.anvil.super": "Har supergaldring",
     "container.anvil.over": "Overgaldra",
     "container.anvil.change": "Ingenting endra seg",
     "container.anvil.name": "Nytt navn-kostnad: %s",
     "container.anvil.repair": "Reparasjonskostnad: %s",
     "container.anvil.cost": "Galdrekostnad: %s",
-    "advancements.nether.repair_super_gear.title": "Meisterleg handverk",
-    "advancements.nether.repair_super_gear.description": "Reparer utstyr i eit netherittsmieste"
+    "advancements.nether.repair_over_gear.title": "Meisterleg handverk",
+    "advancements.nether.repair_over_gear.description": "Reparer utstyr i eit netherittsmieste"
 }

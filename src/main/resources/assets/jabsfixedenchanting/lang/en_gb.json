@@ -2,6 +2,6 @@
     "block.jabsfixedenchanting.netherite_anvil": "Netherite Anvil",
     "block.jabsfixedenchanting.chipped_netherite_anvil": "Chipped Netherite Anvil",
     "block.jabsfixedenchanting.damaged_netherite_anvil": "Damaged Netherite Anvil",
-    "advancements.nether.repair_super_gear.title": "Master Craftsmanship",
-    "advancements.nether.repair_super_gear.description": "Repair Super Enchanted Gear within a Netherite Anvil"
+    "advancements.nether.repair_over_gear.title": "Master Craftsmanship",
+    "advancements.nether.repair_over_gear.description": "Repair Over-Enchanted Gear within a Netherite Anvil"
 }
