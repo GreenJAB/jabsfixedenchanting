@@ -23,18 +23,18 @@ public abstract class ItemsMixin {
     @At(value = "CONSTANT", args = "stringValue=bow"), to =
     @At(value = "FIELD",target = "Lnet/minecraft/world/item/Items;BOW:Lnet/minecraft/world/item/Item;", opcode = Opcodes.PUTSTATIC)), index = 2)
     private static Item.Properties repairableBow(Item.Properties properties) {
-        return properties.repairable(ModTags.STRINGTAG);}
+        return properties.repairable(ModTags.STRING);}
 
     @ModifyArg(method="<clinit>", at = @At( value = "INVOKE", target = "Lnet/minecraft/world/item/Items;registerItem(Ljava/lang/String;Ljava/util/function/Function;Lnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/Item;", ordinal = 0 ), slice = @Slice(from =
     @At(value = "CONSTANT", args = "stringValue=crossbow"), to =
     @At(value = "FIELD",target = "Lnet/minecraft/world/item/Items;CROSSBOW:Lnet/minecraft/world/item/Item;", opcode = Opcodes.PUTSTATIC)), index = 2)
     private static Item.Properties repairableCrossBow(Item.Properties properties) {
-        return properties.repairable(ModTags.STRINGTAG);}
+        return properties.repairable(ModTags.STRING);}
 
     @ModifyArg(method="<clinit>", at = @At( value = "INVOKE", target = "Lnet/minecraft/world/item/Items;registerItem(Ljava/lang/String;Ljava/util/function/Function;Lnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/Item;", ordinal = 0 ), slice = @Slice(from =
     @At(value = "CONSTANT", args = "stringValue=fishing_rod"), to =
     @At(value = "FIELD",target = "Lnet/minecraft/world/item/Items;FISHING_ROD:Lnet/minecraft/world/item/Item;", opcode = Opcodes.PUTSTATIC)), index = 2)
     private static Item.Properties repairableFishingRod(Item.Properties properties) {
-        return properties.repairable(ModTags.STRINGTAG);}
+        return properties.repairable(ModTags.STRING);}
 
 }

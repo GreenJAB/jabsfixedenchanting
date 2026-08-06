@@ -27,7 +27,6 @@
     "enchanting.ItemStackMixin",
     "enchanting.PlayerMixin",
     "enchanting.ServerGamePacketListenerImplMixin",
-    "enchanting.ToolMaterialMixin",
     "structure.StrongholdPieceLibraryMixin",
     "structure.SwampHutPieceMixin",
     "util.MinecraftServerMixin"

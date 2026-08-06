@@ -20,7 +20,7 @@ public abstract class SimpleEquipmentLayerMixin<S extends LivingEntityRenderStat
             value = "INVOKE",
             target = "Lnet/minecraft/world/item/ItemStack;get(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;"
     ))
-    private void setEnchantTheRainbowItemStack(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords,
+    private void setEnchantGlintItemStack(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords,
                                                S state, float yRot, float xRot, CallbackInfo ci, @Local ItemStack equipment) {
         EnchantGlint.setTargetStack(equipment);
     }

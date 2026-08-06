@@ -13,10 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ThrownTridentRenderer.class)
 public abstract class ThrownTridentRendererMixin {
 
-    @Inject(method = "extractRenderState(Lnet/minecraft/world/entity/projectile/arrow/ThrownTrident;Lnet/minecraft/client/renderer/entity/state/ThrownTridentRenderState;F)V", at = @At(
-            value = "HEAD"
-    ))
-    private void setEnchantTheRainbowItemStack(ThrownTrident entity, ThrownTridentRenderState state, float partialTicks, CallbackInfo ci) {
+    @Inject(method = "extractRenderState(Lnet/minecraft/world/entity/projectile/arrow/ThrownTrident;Lnet/minecraft/client/renderer/entity/state/ThrownTridentRenderState;F)V", at = @At(value = "HEAD"))
+    private void setEnchantGlintItemStack(ThrownTrident entity, ThrownTridentRenderState state, float partialTicks, CallbackInfo ci) {
         EnchantGlint.setTargetStack(entity.getWeaponItem());
     }
 }

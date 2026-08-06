@@ -30,11 +30,6 @@ public class LootTableAdditions {
                 tableBuilder.pool(bookPool(enchantments, ABANDONED_MINESHAFT_EBOOKS).build());
             } else if (key==BuiltInLootTables.ANCIENT_CITY) {
                 tableBuilder.pool(bookPool(enchantments, ANCIENT_CITY_EBOOKS).build());
-                tableBuilder.pool(LootPool.lootPool().add(LootItem.lootTableItem(Items.AIR).setWeight(5))
-                        .add(enchantedArmor(enchantments, Items.DIAMOND_HELMET))
-                        .add(enchantedArmor(enchantments, Items.DIAMOND_CHESTPLATE))
-                        .add(enchantedArmor(enchantments, Items.DIAMOND_BOOTS))
-                        .build());
             } else if (key==BuiltInLootTables.BASTION_TREASURE) {
                 tableBuilder.pool(bookPoolPlus(enchantments, BASTION_TREASURE_EBOOKS, 1, 20).build());
             } else if (key==BuiltInLootTables.BURIED_TREASURE) {

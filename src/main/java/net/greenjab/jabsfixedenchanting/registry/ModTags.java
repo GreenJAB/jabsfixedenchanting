@@ -8,7 +8,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 
 public class ModTags {
 
-    public static final TagKey<Item> STRINGTAG = TagKey.create(Registries.ITEM, JabsFixedEnchanting.id("string"));
+    public static final TagKey<Item> STRING = TagKey.create(Registries.ITEM, JabsFixedEnchanting.id("string"));
 
     public static final TagKey<Enchantment> ABANDONED_MINESHAFT_EBOOKS = enchant_of("chest/abandoned_mineshaft");
     public static final TagKey<Enchantment> ANCIENT_CITY_EBOOKS = enchant_of("chest/ancient_city");

@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class ItemModelResolverMixin {
 
     @Inject(method = "appendItemLayers", at = @At("HEAD"))
-    private void setEnchantTheRainbowItemStack(ItemStackRenderState output, ItemStack item, ItemDisplayContext displayContext, Level level,
+    private void setEnchantGlintItemStack(ItemStackRenderState output, ItemStack item, ItemDisplayContext displayContext, Level level,
                                                ItemOwner owner, int seed, CallbackInfo ci) {
         EnchantGlint.setTargetStack(item);
     }

@@ -25,7 +25,7 @@ public abstract class WingsLayerMixin<S extends HumanoidRenderState, M extends E
     }
 
     @Inject(method = "submit(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/client/renderer/entity/state/HumanoidRenderState;FF)V", at = @At("HEAD"))
-    private void setEnchantTheRainbowItemStack(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, S state,
+    private void setEnchantGlintItemStack(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, S state,
                                                float yRot, float xRot, CallbackInfo ci) {
         EnchantGlint.setTargetStack(state.chestEquipment);
     }

@@ -163,15 +163,4 @@ public class JabsFixedEnchantmentHelper {
             return IS2;
         } else return IS;
     }
-
-    public static int enchantLevel(ItemStack stack, String name) {
-        int level = 0;
-        ItemEnchantments itemEnchantmentsComponent = stack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
-        for (Holder<Enchantment> e : stack.getEnchantments().keySet()) {
-            if (e.getRegisteredName().toLowerCase().contains(name.toLowerCase())) {
-                level += itemEnchantmentsComponent.getLevel(e);
-            }
-        }
-        return level;
-    }
 }

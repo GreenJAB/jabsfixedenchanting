@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class ArmorMaterialMixin {
 
     @ModifyVariable(method = "<init>", at = @At("HEAD"), argsOnly = true, ordinal = 0)
-    private static int adjustedCopperDurability(int durability,
+    private static int adjustedGoldDurability(int durability,
                                                 @Local(argsOnly = true) ResourceKey<EquipmentAsset> assetId) {
         if (assetId == EquipmentAssets.GOLD) return 4;
         return durability;
