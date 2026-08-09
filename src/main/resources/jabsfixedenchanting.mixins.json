@@ -26,6 +26,7 @@
     "enchanting.ItemEnchantmentsMixin",
     "enchanting.ItemStackMixin",
     "enchanting.PlayerMixin",
+    "enchanting.SculkBlockMixin",
     "enchanting.ServerGamePacketListenerImplMixin",
     "structure.StrongholdPieceLibraryMixin",
     "structure.SwampHutPieceMixin",

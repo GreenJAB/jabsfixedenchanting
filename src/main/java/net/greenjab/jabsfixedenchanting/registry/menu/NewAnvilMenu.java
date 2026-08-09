@@ -46,7 +46,7 @@ public class NewAnvilMenu extends ItemCombinerMenu {
     private static final int RESULT_SLOT_X_PLACEMENT = 134;
     private static final int SLOT_Y_PLACEMENT = 47;
 
-    private int repairItemUsage;
+    private boolean repairItem;
 
     public NewAnvilMenu(final int containerId, final Inventory inventory) {
         this(containerId, inventory, ContainerLevelAccess.NULL, false);
@@ -99,9 +99,9 @@ public class NewAnvilMenu extends ItemCombinerMenu {
         } else finalbreakChance = 12;
 
         ItemStack itemStack = this.inputSlots.getItem(1);
-        if (this.repairItemUsage > 0) {
-            if (!itemStack.isEmpty() && itemStack.getCount() > this.repairItemUsage) {
-                itemStack.shrink(this.repairItemUsage);
+        if (this.repairItem) {
+            if (!itemStack.isEmpty()) {
+                itemStack.shrink(1);
                 this.inputSlots.setItem(1, itemStack);
             } else {
                 this.inputSlots.setItem(1, ItemStack.EMPTY);
@@ -175,7 +175,7 @@ public class NewAnvilMenu extends ItemCombinerMenu {
         if (!EnchantmentHelper.canStoreEnchantments(input)) return;
 
         ItemEnchantments.Mutable builder = new ItemEnchantments.Mutable(EnchantmentHelper.getEnchantmentsForCrafting(result));
-        this.repairItemUsage = 0;
+        this.repairItem = false;
         if (!addition.isEmpty()) {
             if (input.is(Items.BOOK)) {
                 this.text.set(AnvilMsg.COMBINE.id);
@@ -195,8 +195,9 @@ public class NewAnvilMenu extends ItemCombinerMenu {
                     result.setDamageValue(resultDamage);
                     repairAmount = Math.min(result.getDamageValue(), result.getMaxDamage() / 2);
                 }
+                result.setDamageValue(0);
                 repair = true;
-                this.repairItemUsage = count;
+                this.repairItem = true;
             } else {
                 //2nd slot isnt usable
                 if (!book && (!result.is(addition.getItem()) || !result.isDamageableItem())) {

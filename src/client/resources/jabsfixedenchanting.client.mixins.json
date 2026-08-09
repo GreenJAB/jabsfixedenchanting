@@ -16,8 +16,6 @@
     "ItemModelResolverMixin",
     "ParticleResourcesMixin",
     "RenderBuffersMixin",
-    "SimpleEquipmentLayerMixin",
-    "ThrownTridentRendererMixin",
-    "WingsLayerMixin"
+    "ThrownTridentRendererMixin"
   ]
 }
