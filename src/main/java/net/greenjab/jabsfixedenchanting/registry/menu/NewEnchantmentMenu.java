@@ -2,7 +2,7 @@ package net.greenjab.jabsfixedenchanting.registry.menu;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.greenjab.jabsfixedenchanting.JabsFixedEnchanting;
-import net.greenjab.jabsfixedenchanting.enchanting.JabsFixedEnchantmentHelper;
+import net.greenjab.jabsfixedenchanting.JabsFixedEnchantmentHelper;
 import net.greenjab.jabsfixedenchanting.registry.registries.GameRuleRegistry;
 import net.greenjab.jabsfixedenchanting.registry.registries.MenuRegistry;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -115,10 +115,8 @@ public class NewEnchantmentMenu extends AbstractContainerMenu {
 
                             this.costs[slot] = enchantmentPower;
                         } else {
-                            for (int i = 0; i < 3; i++) {
-                                this.costs[i] = 0;
-                                this.icon[i] = -1;
-                            }
+                            this.costs[slot] = 0;
+                            this.icon[slot] = -1;
                         }
                     }
                     this.broadcastChanges();
@@ -249,7 +247,9 @@ public class NewEnchantmentMenu extends AbstractContainerMenu {
             }
             if (itemStack.is(Items.BOOK)) enchantments.replaceAll((e, _) -> Math.max(enchantments.get(e) / 2, 1));
             List<EnchantmentInstance> enchantmentsResult = new ArrayList<>();
-            enchantments.forEach((enchantment, level) -> enchantmentsResult.add(new EnchantmentInstance(enchantment, (JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.SUPER_ENCHANT_CHANCE)>0&&itemStack.is(ItemTags.PIGLIN_LOVED)&&enchantment.value().getMaxLevel()!=1)?level+1:level)));
+            enchantments.forEach((enchantment, level) -> {
+                if (!itemStack.is(Items.BOOK) || enchantment.value().getMaxLevel()>1) enchantmentsResult.add(new EnchantmentInstance(enchantment, (JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.SUPER_ENCHANT_CHANCE)>0&&itemStack.is(ItemTags.PIGLIN_LOVED)&&enchantment.value().getMaxLevel()!=1)?level+1:level));
+            });
             return (enchantmentsResult);
         }
     }

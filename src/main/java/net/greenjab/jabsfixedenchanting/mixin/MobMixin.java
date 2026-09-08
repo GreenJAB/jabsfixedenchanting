@@ -1,6 +1,6 @@
 package net.greenjab.jabsfixedenchanting.mixin;
 
-import net.greenjab.jabsfixedenchanting.enchanting.JabsFixedEnchantmentHelper;
+import net.greenjab.jabsfixedenchanting.JabsFixedEnchantmentHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;

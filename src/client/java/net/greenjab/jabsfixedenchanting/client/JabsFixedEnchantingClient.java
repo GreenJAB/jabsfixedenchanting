@@ -17,6 +17,9 @@ import net.minecraft.network.chat.Component;
 public class JabsFixedEnchantingClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
+
+		ClientSyncHandler.init();
+
 		MenuScreens.register(MenuRegistry.NEW_ENCHANTMENT_SCREEN_HANDLER, NewEnchantmentScreen::new);
 		MenuScreens.register(MenuRegistry.NEW_ANVIL_SCREEN_HANDLER, NewAnvilScreen::new);
 

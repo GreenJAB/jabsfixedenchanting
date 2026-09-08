@@ -1,6 +1,7 @@
 package net.greenjab.jabsfixedenchanting.mixin.util;
 
-import net.greenjab.jabsfixedenchanting.enchanting.Networking;
+import net.greenjab.jabsfixedenchanting.network.GameRuleStatus;
+import net.greenjab.jabsfixedenchanting.network.Networking;
 import net.greenjab.jabsfixedenchanting.JabsFixedEnchanting;
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,5 +18,6 @@ public abstract class MinecraftServerMixin {
             JabsFixedEnchanting.SERVER = SW;
             Networking.SERVER_LOCK.notifyAll();
         }
+        if (SW.getTickCount()%99==0) GameRuleStatus.sendData(SW);
     }
 }

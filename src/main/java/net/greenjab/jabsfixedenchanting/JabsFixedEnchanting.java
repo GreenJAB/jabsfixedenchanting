@@ -2,6 +2,8 @@ package net.greenjab.jabsfixedenchanting;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.greenjab.jabsfixedenchanting.network.GameRuleStatus;
+import net.greenjab.jabsfixedenchanting.network.SyncHandler;
 import net.greenjab.jabsfixedenchanting.registry.registries.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
@@ -17,10 +19,13 @@ public class JabsFixedEnchanting implements ModInitializer {
 	public static final String MOD_NAME = "Jabs Fixed Enchanting";
 	public static final Logger LOGGER = LoggerFactory.getLogger(NAMESPACE);
 	public static MinecraftServer SERVER = null;
+	public static GameRuleStatus gameRules = new GameRuleStatus();
 
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Initializing " + MOD_NAME);
+
+		SyncHandler.init();
 
 		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();

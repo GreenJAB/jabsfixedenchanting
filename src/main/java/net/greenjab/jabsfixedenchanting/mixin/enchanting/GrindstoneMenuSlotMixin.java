@@ -1,7 +1,7 @@
 package net.greenjab.jabsfixedenchanting.mixin.enchanting;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import net.greenjab.jabsfixedenchanting.enchanting.JabsFixedEnchantmentHelper;
+import net.greenjab.jabsfixedenchanting.JabsFixedEnchantmentHelper;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

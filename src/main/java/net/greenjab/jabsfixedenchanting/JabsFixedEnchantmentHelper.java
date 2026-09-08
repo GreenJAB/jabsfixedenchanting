@@ -1,8 +1,7 @@
-package net.greenjab.jabsfixedenchanting.enchanting;
+package net.greenjab.jabsfixedenchanting;
 
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import net.greenjab.jabsfixedenchanting.JabsFixedEnchanting;
 import net.greenjab.jabsfixedenchanting.registry.registries.GameRuleRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -45,17 +44,20 @@ public class JabsFixedEnchantmentHelper {
 
     public static int getEnchantmentCapacity(ItemStack itemStack) {
         Item item = itemStack.getItem();
-        if (lastCapacity != JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.ENCHANT_CAPACITY_PERCENTAGE)) {
-            lastCapacity = JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.ENCHANT_CAPACITY_PERCENTAGE);
-            ItemCapacities = new HashMap<>(Map.of());
-        }
-        if (!ItemCapacities.containsKey(item))
-            if (JabsFixedEnchanting.SERVER!=null) {
-                HashMap<Item, Integer> map = new HashMap<>(Map.of());
-                map.putAll(ItemCapacities);
-                map.put(item, getNewEnchantmentCapacity(itemStack));
-                ItemCapacities = map;
+        if (JabsFixedEnchanting.SERVER!=null) {
+            if (lastCapacity != JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.ENCHANT_CAPACITY_PERCENTAGE)) {
+                lastCapacity = JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.ENCHANT_CAPACITY_PERCENTAGE);
+                ItemCapacities = new HashMap<>(Map.of());
             }
+            if (!ItemCapacities.containsKey(item)) {
+                if (JabsFixedEnchanting.SERVER != null) {
+                    HashMap<Item, Integer> map = new HashMap<>(Map.of());
+                    map.putAll(ItemCapacities);
+                    map.put(item, getNewEnchantmentCapacity(itemStack));
+                    ItemCapacities = map;
+                }
+            }
+        }
         return ItemCapacities.getOrDefault(item, 0);
     }
 
@@ -133,7 +135,7 @@ public class JabsFixedEnchantmentHelper {
     }
 
     public static ItemStack applySuperEnchants(ItemStack IS, RandomSource random, boolean pale) {
-        if (JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.SUPER_ENCHANT_CHANCE)==0) return IS;
+        if (JabsFixedEnchanting.SERVER==null||JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.SUPER_ENCHANT_CHANCE)==0) return IS;
         if (!IS.is(Items.ENCHANTED_BOOK)) {
             ItemStack IS2 = IS.getItem().getDefaultInstance();
             ItemEnchantments map = EnchantmentHelper.getEnchantmentsForCrafting(IS);
@@ -155,7 +157,7 @@ public class JabsFixedEnchantmentHelper {
 
             if (isSuper) {
                 IS2.set(DataComponents.REPAIR_COST, 1);
-                if (!JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.MENDING_ON_OP_ITEMS)) {
+                if (!JabsFixedEnchanting.gameRules.mending_on_op) {
                     builder.removeIf(e -> e.is(Enchantments.MENDING));
                 }
             }

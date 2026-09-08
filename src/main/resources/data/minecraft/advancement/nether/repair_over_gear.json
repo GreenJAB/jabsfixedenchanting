@@ -14,7 +14,7 @@
     },
     "display": {
         "description": {
-            "translate": "advancements.nether.repair_super_gear.description"
+            "translate": "advancements.nether.repair_over_gear.description"
         },
         "frame": "challenge",
         "icon": {
@@ -28,7 +28,7 @@
             "id": "jabsfixedenchanting:netherite_anvil"
         },
         "title": {
-            "translate": "advancements.nether.repair_super_gear.title"
+            "translate": "advancements.nether.repair_over_gear.title"
         }
     },
     "requirements": [

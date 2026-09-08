@@ -2,8 +2,7 @@ package net.greenjab.jabsfixedenchanting.registry.menu;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.greenjab.jabsfixedenchanting.JabsFixedEnchanting;
-import net.greenjab.jabsfixedenchanting.enchanting.JabsFixedEnchantmentHelper;
-import net.greenjab.jabsfixedenchanting.registry.registries.GameRuleRegistry;
+import net.greenjab.jabsfixedenchanting.JabsFixedEnchantmentHelper;
 import net.greenjab.jabsfixedenchanting.registry.registries.ItemRegistry;
 import net.greenjab.jabsfixedenchanting.registry.registries.MenuRegistry;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -39,6 +38,8 @@ public class NewAnvilMenu extends ItemCombinerMenu {
     private String itemName;
     private final DataSlot cost = DataSlot.standalone();
     private final DataSlot capacity = DataSlot.standalone();
+    private final DataSlot in_cap = DataSlot.standalone();
+    private final DataSlot out_cap = DataSlot.standalone();
     private final DataSlot netherite = DataSlot.standalone();
     private final DataSlot text = DataSlot.standalone();
     private static final int INPUT_SLOT_X_PLACEMENT = 27;
@@ -56,6 +57,8 @@ public class NewAnvilMenu extends ItemCombinerMenu {
         super(MenuRegistry.NEW_ANVIL_SCREEN_HANDLER, containerId, inventory, access, createInputSlotDefinitions());
         this.addDataSlot(this.cost);
         this.addDataSlot(this.capacity);
+        this.addDataSlot(this.in_cap);
+        this.addDataSlot(this.out_cap);
         this.addDataSlot(this.netherite).set(netherite?1:0);
         this.addDataSlot(this.text).set(0);
     }
@@ -91,7 +94,9 @@ public class NewAnvilMenu extends ItemCombinerMenu {
         }
 
         int finalbreakChance;
-        if (isNetherite()) {
+        if (this.inputSlots.getItem(1).isEmpty()) {
+            finalbreakChance = 0;
+        } else if (isNetherite()) {
             int cap = JabsFixedEnchantmentHelper.getEnchantmentCapacity(carried);
             int current = JabsFixedEnchantmentHelper.getOccupiedEnchantmentCapacity(carried, false);
             if (current > cap) finalbreakChance = 12;
@@ -144,12 +149,17 @@ public class NewAnvilMenu extends ItemCombinerMenu {
         ItemStack addition = this.inputSlots.getItem(1);
         ItemStack result = input.copy();
 
-        this.capacity.set(JabsFixedEnchantmentHelper.getEnchantmentCapacity(result));
-
         this.cost.set(0);
+        if (JabsFixedEnchanting.SERVER != null) this.capacity.set(0);
+        this.in_cap.set(0);
+        this.out_cap.set(0);
         this.text.set(AnvilMsg.NONE.id);
         this.resultSlots.setItem(0, ItemStack.EMPTY);
         if (input.isEmpty()) return;
+
+        if (JabsFixedEnchanting.SERVER != null) this.capacity.set(JabsFixedEnchantmentHelper.getEnchantmentCapacity(input));
+        this.in_cap.set(JabsFixedEnchantmentHelper.getOccupiedEnchantmentCapacity(input, false));
+        this.out_cap.set(this.in_cap.get());
 
         boolean newName = false;
         boolean repair = false;
@@ -188,15 +198,8 @@ public class NewAnvilMenu extends ItemCombinerMenu {
                     this.text.set(AnvilMsg.FIXED.id);
                     return;
                 }
-                int repairAmount = Math.min(result.getDamageValue(), result.getMaxDamage() / 2);
-                int count;
-                for (count = 0; repairAmount > 0 && count < addition.getCount(); count++) {
-                    int resultDamage = result.getDamageValue() - repairAmount;
-                    result.setDamageValue(resultDamage);
-                    repairAmount = Math.min(result.getDamageValue(), result.getMaxDamage() / 2);
-                }
-                result.setDamageValue(0);
                 repair = true;
+                result.setDamageValue(0);
                 this.repairItem = true;
             } else {
                 //2nd slot isnt usable
@@ -206,8 +209,8 @@ public class NewAnvilMenu extends ItemCombinerMenu {
                 }
 
                 if (result.isDamageableItem() && !book) {
-                    if (EnchantmentHelper.getEnchantmentsForCrafting(addition).isEmpty() || JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.COMBINE_ENCHANTED_ITEMS)) {
-                        if (input.getDamageValue() == 0 && !JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.COMBINE_ENCHANTED_ITEMS)) {
+                    if (EnchantmentHelper.getEnchantmentsForCrafting(addition).isEmpty() || JabsFixedEnchanting.gameRules.combine_items) {
+                        if (input.getDamageValue() == 0 && !JabsFixedEnchanting.gameRules.combine_items) {
                             this.text.set(AnvilMsg.FIXED.id);
                             return;
                         }
@@ -268,9 +271,16 @@ public class NewAnvilMenu extends ItemCombinerMenu {
         int enchantmentPower = JabsFixedEnchantmentHelper.getOccupiedEnchantmentCapacity(result, true);
         if (repair) this.cost.set(Mth.ceil(enchantmentPower / 2.0f));
         else this.cost.set(enchantmentPower);
+        this.out_cap.set(enchantmentPower);
 
-        if (!JabsFixedEnchanting.SERVER.getGameRules().get(GameRuleRegistry.MENDING_ON_OP_ITEMS)) {
-            if (!this.player.hasInfiniteMaterials() && ((enchantmentPower < 1 || enchantmentPower > this.capacity.get()) && this.capacity.get() != 0)) {
+        if (!this.player.hasInfiniteMaterials() && ((enchantmentPower < 1 || enchantmentPower > getCapacity()) && getCapacity() != 0)) {
+            if (!isNetherite()) {
+                this.resultSlots.setItem(0, ItemStack.EMPTY);
+                this.text.set(AnvilMsg.OVER.id);
+                return;
+            }
+
+            if (!JabsFixedEnchanting.gameRules.mending_on_op) {
                 ItemEnchantments outputEnchants = EnchantmentHelper.getEnchantmentsForCrafting(result);
                 for (Object2IntMap.Entry<Holder<Enchantment>> entry : outputEnchants.entrySet()) {
                     Holder<Enchantment> registryEntry = entry.getKey();
@@ -319,18 +329,12 @@ public class NewAnvilMenu extends ItemCombinerMenu {
         return filteredName.length() <= 50 ? filteredName : null;
     }
 
-    public int getCost() {
-        return this.cost.get();
-    }
-    public int getCapacity() {
-        return this.capacity.get();
-    }
-    public boolean isNetherite() {
-        return this.netherite.get()==1;
-    }
-    public int getText() {
-        return this.text.get();
-    }
+    public int getCost() {return this.cost.get();}
+    public int getInCap() {return this.in_cap.get();}
+    public int getOutCap() {return this.out_cap.get();}
+    public int getCapacity() {return this.capacity.get();}
+    public boolean isNetherite() {return this.netherite.get()==1;}
+    public int getText() {return this.text.get();}
 
     public enum AnvilMsg {
 
