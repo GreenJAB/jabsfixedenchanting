@@ -13,7 +13,6 @@ public abstract class GlintRenderLayer extends RenderType {
     private static final Identifier item_texture = Identifier.parse("textures/misc/super_enchanted_glint_item.png");
     private static final Identifier entity_texture = Identifier.parse("textures/misc/super_enchanted_glint_entity.png");
 
-
     public static final RenderType glintColor = RenderType.create(
             "glint",
             RenderSetup.builder(RenderPipelines.GLINT)
@@ -48,5 +47,4 @@ public abstract class GlintRenderLayer extends RenderType {
     public GlintRenderLayer(String name, RenderSetup renderSetup) {
         super(name, renderSetup);
     }
-
 }

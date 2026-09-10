@@ -15,7 +15,9 @@
     "ItemFeatureRendererMixin",
     "ItemModelResolverMixin",
     "ParticleResourcesMixin",
-    "RenderBuffersMixin",
-    "ThrownTridentRendererMixin"
+    "TridentSpecialRendererMixin"
+  ],
+  "client": [
+    "ItemModelMixin"
   ]
 }

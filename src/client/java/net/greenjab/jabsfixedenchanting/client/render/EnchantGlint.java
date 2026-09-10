@@ -27,21 +27,9 @@ public class EnchantGlint {
     }
 
     @Environment(EnvType.CLIENT)
-    public static RenderType getGlint() {
-        if (isSuper()) return GlintRenderLayer.glintColor;
-        else return RenderTypes.glint();
-    }
-
-    @Environment(EnvType.CLIENT)
     public static RenderType getEntityGlint() {
         if (isSuper()) return GlintRenderLayer.entityGlintColor;
         else return RenderTypes.entityGlint();
-    }
-
-    @Environment(EnvType.CLIENT)
-    public static RenderType getGlintTranslucent() {
-        if (isSuper()) return GlintRenderLayer.translucentGlintColor;
-        else return RenderTypes.glintTranslucent();
     }
 
     @Environment(EnvType.CLIENT)
@@ -58,15 +46,8 @@ public class EnchantGlint {
     }
 
     @Environment(EnvType.CLIENT)
-    public static RenderType getEntityGlint(boolean green) {
-        if (green) return GlintRenderLayer.entityGlintColor;
-        else return RenderTypes.entityGlint();
-    }
-
-    @Environment(EnvType.CLIENT)
     public static RenderType getGlintTranslucent(boolean green) {
         if (green) return GlintRenderLayer.translucentGlintColor;
         else return RenderTypes.glintTranslucent();
     }
-
 }

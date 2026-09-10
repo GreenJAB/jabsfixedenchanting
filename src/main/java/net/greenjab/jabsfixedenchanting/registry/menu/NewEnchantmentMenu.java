@@ -5,7 +5,7 @@ import net.greenjab.jabsfixedenchanting.JabsFixedEnchanting;
 import net.greenjab.jabsfixedenchanting.JabsFixedEnchantmentHelper;
 import net.greenjab.jabsfixedenchanting.registry.registries.GameRuleRegistry;
 import net.greenjab.jabsfixedenchanting.registry.registries.MenuRegistry;
-import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryAccess;
