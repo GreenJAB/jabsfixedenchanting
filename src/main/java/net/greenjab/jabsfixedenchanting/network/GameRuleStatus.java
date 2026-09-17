@@ -10,7 +10,7 @@ import net.minecraft.world.level.gamerules.GameRules;
 public class GameRuleStatus {
     public boolean combine_items;
     public boolean mending_on_op;
-    public boolean grinstone_damage;
+    public boolean grindstone_damage;
 
     public GameRuleStatus(){
     }
@@ -18,20 +18,20 @@ public class GameRuleStatus {
     public void updateRules(GameRules rules) {
         this.combine_items = rules.get(GameRuleRegistry.COMBINE_ENCHANTED_ITEMS);
         this.mending_on_op = rules.get(GameRuleRegistry.MENDING_ON_OP_ITEMS);
-        this.grinstone_damage = rules.get(GameRuleRegistry.GRINDSTONE_DAMAGES_ITEM);
+        this.grindstone_damage = rules.get(GameRuleRegistry.GRINDSTONE_DAMAGES_ITEM);
     }
 
     void toPacket(FriendlyByteBuf buf) {
         buf.writeBoolean(combine_items);
         buf.writeBoolean(mending_on_op);
-        buf.writeBoolean(grinstone_damage);
+        buf.writeBoolean(grindstone_damage);
     }
 
     static GameRuleStatus fromPacket(FriendlyByteBuf buf) {
         GameRuleStatus p = new GameRuleStatus();
         p.combine_items = buf.readBoolean();
         p.mending_on_op = buf.readBoolean();
-        p.grinstone_damage = buf.readBoolean();
+        p.grindstone_damage = buf.readBoolean();
         return p;
     }
 
