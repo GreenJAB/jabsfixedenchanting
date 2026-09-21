@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jabsfixedenchanting:experience_bottle"
+        "recipes": "jabsfixedenchanting:experience_bottle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

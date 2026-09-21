@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jabsfixedenchanting:netherite_anvil_smithing"
+        "recipes": "jabsfixedenchanting:netherite_anvil_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

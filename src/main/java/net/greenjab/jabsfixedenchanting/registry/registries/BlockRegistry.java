@@ -19,7 +19,7 @@ public class BlockRegistry {
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)
                     .strength(5.0F, 1200.0F)
                     .sound(SoundType.ANVIL)
-                    .pushReaction(PushReaction.BLOCK)
+                    .pushReaction(PushReaction.IMMOVEABLE)
     );
     public static final Block CHIPPED_NETHERITE_ANVIL = register(
             "chipped_netherite_anvil",
@@ -27,7 +27,7 @@ public class BlockRegistry {
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)
                     .strength(5.0F, 1200.0F)
                     .sound(SoundType.ANVIL)
-                    .pushReaction(PushReaction.BLOCK)
+                    .pushReaction(PushReaction.IMMOVEABLE)
     );
     public static final Block DAMAGED_NETHERITE_ANVIL = register(
             "damaged_netherite_anvil",
@@ -35,7 +35,7 @@ public class BlockRegistry {
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)
                     .strength(5.0F, 1200.0F)
                     .sound(SoundType.ANVIL)
-                    .pushReaction(PushReaction.BLOCK)
+                    .pushReaction(PushReaction.IMMOVEABLE)
     );
 
     private static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {

@@ -5,17 +5,14 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import org.jspecify.annotations.NonNull;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import static net.greenjab.jabsfixedenchanting.registry.ModTags.*;
 
@@ -68,16 +65,10 @@ public class LootTableAdditions {
                         .add(LootItem.lootTableItem(Items.BOOK).setWeight(4)
                                 .apply(new EnchantRandomlyFunction.Builder().withOneOf(enchantments.getOrThrow(TRAIL_RUINS_EBOOKS))))
                         .add(LootItem.lootTableItem(Items.BOOK).setWeight(2)
-                                .apply(new EnchantWithLevelsFunction.Builder(ConstantValue.exactly(20))
+                                .apply(new EnchantWithLevelsFunction.Builder(ContextIntProviders.exactly(20))
                                         .withOptions(enchantments.get(EnchantmentTags.ON_RANDOM_LOOT).map( named -> named)))));
             }
 	  });
-    }
-
-    private static LootPoolSingletonContainer.@NonNull Builder<?> enchantedArmor(HolderLookup.RegistryLookup<Enchantment> enchantments, Item armor) {
-        return LootItem.lootTableItem(armor).setWeight(1)
-                .apply(new EnchantWithLevelsFunction.Builder(ConstantValue.exactly(30))
-                        .withOptions(enchantments.get(EnchantmentTags.ON_RANDOM_LOOT).map(named -> named)));
     }
 
     private static LootPool.Builder bookPoolPlus(HolderLookup.RegistryLookup<Enchantment> enchantments, TagKey<Enchantment> tag, int level){
@@ -86,7 +77,7 @@ public class LootTableAdditions {
 
     private static LootPool.Builder bookPoolPlus(HolderLookup.RegistryLookup<Enchantment> enchantments, TagKey<Enchantment> tag, int rolls, int level){
         return bookPool(enchantments, tag, rolls).add(LootItem.lootTableItem(Items.BOOK).setWeight(1)
-                .apply(new EnchantWithLevelsFunction.Builder(ConstantValue.exactly(level))
+                .apply(new EnchantWithLevelsFunction.Builder(ContextIntProviders.exactly(level))
                         .withOptions(enchantments.get(EnchantmentTags.ON_RANDOM_LOOT).map( named -> named))));
     }
 
@@ -99,7 +90,7 @@ public class LootTableAdditions {
     }
 
     private static LootPool.Builder bookPool(HolderLookup.RegistryLookup<Enchantment> enchantments, TagKey<Enchantment> tag, int rolls){
-        return LootPool.lootPool().setRolls(ConstantValue.exactly(rolls))
+        return LootPool.lootPool().setRolls(ContextIntProviders.exactly(rolls))
                 .add(LootItem.lootTableItem(Items.BOOK)
                         .apply(new EnchantRandomlyFunction.Builder().withOneOf(enchantments.getOrThrow(tag))).setWeight(1))
                 .add(LootItem.lootTableItem(Items.AIR).setWeight(1));

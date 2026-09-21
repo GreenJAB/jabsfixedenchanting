@@ -6,7 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.greenjab.jabsfixedenchanting.registry.registries.GameRuleRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.EnchantmentTags;
@@ -46,14 +46,14 @@ public class LibrarianBookLootFunction extends LootItemConditionalFunction {
             i -> commonFields(i)
                     .and(
                             i.group(
-                                    RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter( f -> f.options),
-                                    RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).optionalFieldOf("all_options").forGetter( f -> f.all_options),
+                                    RegistryCodecs.holderSet(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter( f -> f.options),
+                                    RegistryCodecs.holderSet(Registries.ENCHANTMENT).optionalFieldOf("all_options").forGetter( f -> f.all_options),
                                     Codec.BOOL.optionalFieldOf("master", false).forGetter( f -> f.master)
                             )
                     ).apply(i, LibrarianBookLootFunction::new)
     );
 
-    private LibrarianBookLootFunction(final List<LootItemCondition> predicates, final Optional<HolderSet<Enchantment>> options,
+    private LibrarianBookLootFunction(final Optional<Holder<LootItemCondition>> predicates, final Optional<HolderSet<Enchantment>> options,
                                       final Optional<HolderSet<Enchantment>> all_options, final boolean master) {
         super(predicates);
         this.master = master;
@@ -123,7 +123,7 @@ public class LibrarianBookLootFunction extends LootItemConditionalFunction {
 
         HashMap<Holder<Enchantment>, Float> possibleEnchantCount = new HashMap<>();
         compatibleEnchantments.forEach(enchant -> possibleEnchantCount.put(enchant, 0.1f));
-        List<Villager> list = context.getLevel().getEntitiesOfClass(Villager.class, AABB.unitCubeFromLowerCorner(context.getOptionalParameter(LootContextParams.ORIGIN)).inflate(32), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+        List<Villager> list = context.getLevel().getEntitiesOfClass(Villager.class, AABB.unitCubeFromLowerCorner(context.getOptional(LootContextParams.ORIGIN)).inflate(32), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
         for (Villager villager2 : list) {
             if (villager2.getVillagerData().profession().is(VillagerProfession.LIBRARIAN)) {
                 ItemStack eBook = getBook(villager2);

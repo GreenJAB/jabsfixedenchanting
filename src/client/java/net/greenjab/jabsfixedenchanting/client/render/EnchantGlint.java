@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 /** Credit: Pepperoni-Jabroni */
@@ -27,27 +28,14 @@ public class EnchantGlint {
     }
 
     @Environment(EnvType.CLIENT)
-    public static RenderType getEntityGlint() {
-        if (isSuper()) return GlintRenderLayer.entityGlintColor;
-        else return RenderTypes.entityGlint();
+    public static RenderType getArmorEntityGlint(Identifier texture) {
+        if (isSuper()) return GlintRenderLayer.ARMOR_CUTOUT_NO_CULL_GLINT.apply(texture);
+        else return RenderTypes.armorCutoutNoCullGlint(texture);
     }
 
     @Environment(EnvType.CLIENT)
-    public static RenderType getArmorEntityGlint() {
+    public static RenderType getTrimmedArmorEntityGlint() {
         if (isSuper()) return GlintRenderLayer.armorEntityGlintColor;
-        else return RenderTypes.armorEntityGlint();
-    }
-
-
-    @Environment(EnvType.CLIENT)
-    public static RenderType getGlint(boolean green) {
-        if (green) return GlintRenderLayer.glintColor;
-        else return RenderTypes.glint();
-    }
-
-    @Environment(EnvType.CLIENT)
-    public static RenderType getGlintTranslucent(boolean green) {
-        if (green) return GlintRenderLayer.translucentGlintColor;
-        else return RenderTypes.glintTranslucent();
+        else return RenderTypes.trimmedArmorGlint();
     }
 }

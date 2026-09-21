@@ -8,16 +8,11 @@
   "overwrites": {
     "requireAnnotations": true
   },
-  "mixins": [
+  "client": [
     "CuboidItemModelWrapperMixin",
     "EquipmentLayerRendererMixin",
     "FlyTowardsPositionParticleMixin",
-    "ItemFeatureRendererMixin",
-    "ItemModelResolverMixin",
     "ParticleResourcesMixin",
-    "TridentSpecialRendererMixin"
-  ],
-  "client": [
-    "ItemModelMixin"
+    "SheetsMixin"
   ]
 }
