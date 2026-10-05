@@ -1,5 +1,6 @@
 package net.greenjab.jabsfixedenchanting.client.screens;
 
+import net.greenjab.jabsfixedenchanting.JabsFixedEnchanting;
 import net.greenjab.jabsfixedenchanting.client.JabsFixedEnchantingClient;
 import net.greenjab.jabsfixedenchanting.registry.menu.NewAnvilMenu;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -27,9 +28,9 @@ public class NewAnvilScreen extends ItemCombinerScreen<NewAnvilMenu> {
     private static final Identifier TEXT_FIELD_SPRITE = Identifier.withDefaultNamespace("container/anvil/text_field");
     private static final Identifier TEXT_FIELD_DISABLED_SPRITE = Identifier.withDefaultNamespace("container/anvil/text_field_disabled");
     private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/anvil/error");
-    private static final Identifier NETHERITE_ERROR_SPRITE = Identifier.withDefaultNamespace("container/anvil/netherite_error");
-    private static final Identifier ANVIL_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/anvil.png");
-    private static final Identifier NETHERITE_ANVIL_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/netherite_anvil.png");
+    private static final Identifier NETHERITE_ERROR_SPRITE = JabsFixedEnchanting.id("container/anvil/netherite_error");
+    private static final Identifier ANVIL_LOCATION = JabsFixedEnchanting.id("textures/gui/container/anvil.png");
+    private static final Identifier NETHERITE_ANVIL_LOCATION = JabsFixedEnchanting.id("textures/gui/container/netherite_anvil.png");
     private EditBox name;
     private final Player player;
 
