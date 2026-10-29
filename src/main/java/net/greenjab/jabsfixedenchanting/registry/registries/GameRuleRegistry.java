@@ -21,6 +21,8 @@ public class GameRuleRegistry {
     public static GameRule<Boolean> MENDING_ON_OP_ITEMS;
     public static GameRule<Boolean> VILLAGERS_BIOME_ENCHANTED_BOOKS;
     public static GameRule<Boolean> GRINDSTONE_DAMAGES_ITEM;
+    public static GameRule<Boolean> TOMES_INCREASE_LEVEL;
+    public static GameRule<Boolean> ONE_TO_ONE_LAPIS_COST;
     public static GameRule<Boolean> GOLD_GEAR_AUTO_REPAIRS;
 
 
@@ -33,6 +35,8 @@ public class GameRuleRegistry {
         VILLAGERS_BIOME_ENCHANTED_BOOKS = registerBoolean("villagers_biome_enchanted_books", true);
 
         GRINDSTONE_DAMAGES_ITEM = registerBoolean("grindstone_damages_item", true);
+        TOMES_INCREASE_LEVEL = registerBoolean("tomes_increase_level", true);
+        ONE_TO_ONE_LAPIS_COST = registerBoolean("one_to_one_lapis_cost", false);
         GOLD_GEAR_AUTO_REPAIRS = registerBoolean("gold_gear_auto_repairs", true);
     }
 
