@@ -3,6 +3,7 @@ package net.greenjab.jabsfixedenchanting.registry;
 import net.greenjab.jabsfixedenchanting.JabsFixedEnchanting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 
@@ -31,6 +32,8 @@ public class ModTags {
     public static final TagKey<Enchantment> TRIAL_CHAMBER_EBOOKS = enchant_of("other/trial_chamber");
     public static final TagKey<Enchantment> TRAIL_RUINS_EBOOKS = enchant_of("other/trail_ruins");
     public static final TagKey<Enchantment> FISHING_TREASURE_EBOOKS = enchant_of("other/fishing_treasure");
+
+    public static final TagKey<DamageType> IGNORE_CHAINMAIL_PROTECTION_INCREASE = TagKey.create(Registries.DAMAGE_TYPE, JabsFixedEnchanting.id("ignore_chainmail_protection_increase"));
 
     private static TagKey<Enchantment> enchant_of(String id)  {
         return TagKey.create(Registries.ENCHANTMENT, JabsFixedEnchanting.id(id));
