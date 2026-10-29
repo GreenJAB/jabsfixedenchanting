@@ -4,12 +4,15 @@ import net.fabricmc.api.ModInitializer;
 
 import net.greenjab.jabsfixedenchanting.network.GameRuleStatus;
 import net.greenjab.jabsfixedenchanting.network.SyncHandler;
+import net.greenjab.jabsfixedenchanting.registry.other.RepairAnvilDispenserBehaviour;
 import net.greenjab.jabsfixedenchanting.registry.registries.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.DispenserBlock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
@@ -35,6 +38,9 @@ public class JabsFixedEnchanting implements ModInitializer {
 		ParticleRegistry.registerParticles();
 		MenuRegistry.registerMenus();
 		LootTableAdditions.registerLootTableAdds();
+
+		DispenserBlock.registerBehavior(Items.IRON_BLOCK, new RepairAnvilDispenserBehaviour());
+		DispenserBlock.registerBehavior(Items.NETHERITE_INGOT, new RepairAnvilDispenserBehaviour());
 	}
 
 	public static ArrayList<ItemStack> getArmor(LivingEntity entity) {
