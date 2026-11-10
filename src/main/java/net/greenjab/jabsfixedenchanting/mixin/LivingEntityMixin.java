@@ -15,18 +15,23 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
 
-    @Inject(method = "hurtServer", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)V"),
-            cancellable = true
-    )
-    private void cancel0Damage(ServerLevel level, DamageSource source, float damage, CallbackInfoReturnable<Boolean> cir) {
-        if (modifyAppliedDamage(level, source, damage) < 0.05) {
-            cir.setReturnValue(false);
-        }
+    @Inject(method = "actuallyHurt", at = @At(value = "HEAD"), cancellable = true)
+    private void cancel0DamageHit(ServerLevel level, DamageSource source, float dmg, CallbackInfo ci) {
+        if (modifyAppliedDamage(level, source, dmg) < 0.05) ci.cancel();
+    }
+    @Inject(method = "hurtServer", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;broadcastDamageEvent(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;)V"), cancellable = true)
+    private void cancel0DamageAfterBeforeHurt(ServerLevel level, DamageSource source, float damage, CallbackInfoReturnable<Boolean> cir) {
+        if (modifyAppliedDamage(level, source, damage) < 0.05) cir.setReturnValue(false);
+    }
+    @Inject(method = "hurtServer", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;markHurt()V"), cancellable = true)
+    private void cancel0DamageAfterBeforeHurt2(ServerLevel level, DamageSource source, float damage, CallbackInfoReturnable<Boolean> cir) {
+        if (modifyAppliedDamage(level, source, damage) < 0.05) cir.setReturnValue(false);
     }
 
     @Unique
