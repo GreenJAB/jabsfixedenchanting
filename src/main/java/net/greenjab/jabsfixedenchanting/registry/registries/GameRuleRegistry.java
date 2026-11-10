@@ -15,12 +15,14 @@ import java.util.function.ToIntFunction;
 public class GameRuleRegistry {
     public static final GameRuleCategory JABSFIXEDENCHANTING = GameRuleCategory.register(JabsFixedEnchanting.id("aaa_jabsfixedenchanting"));
 
+    public static GameRule<Boolean> ANVIL_BREAKS;
     public static GameRule<Integer> ENCHANT_CAPACITY_PERCENTAGE;
     public static GameRule<Integer> SUPER_ENCHANT_CHANCE;
     public static GameRule<Boolean> COMBINE_ENCHANTED_ITEMS;
     public static GameRule<Boolean> MENDING_ON_OP_ITEMS;
     public static GameRule<Boolean> VILLAGERS_BIOME_ENCHANTED_BOOKS;
     public static GameRule<Boolean> GRINDSTONE_DAMAGES_ITEM;
+    public static GameRule<Boolean> GRINDSTONE_INTO_BOOKS;
     public static GameRule<Boolean> TOMES_INCREASE_LEVEL;
     public static GameRule<Boolean> ONE_TO_ONE_LAPIS_COST;
     public static GameRule<Boolean> GOLD_GEAR_AUTO_REPAIRS;
@@ -28,6 +30,7 @@ public class GameRuleRegistry {
 
     public static void registerGameRules() {
         System.out.println("register GameRules");
+        ANVIL_BREAKS = registerBoolean("anvil_breaks", true);
         ENCHANT_CAPACITY_PERCENTAGE = registerInteger("enchant_capacity_percentage", 54, 1, 100);
         SUPER_ENCHANT_CHANCE = registerInteger("super_enchant_chance", 5, 0, 100);
         COMBINE_ENCHANTED_ITEMS = registerBoolean("combine_enchanted_items", false);
@@ -35,6 +38,7 @@ public class GameRuleRegistry {
         VILLAGERS_BIOME_ENCHANTED_BOOKS = registerBoolean("villagers_biome_enchanted_books", true);
 
         GRINDSTONE_DAMAGES_ITEM = registerBoolean("grindstone_damages_item", true);
+        GRINDSTONE_INTO_BOOKS = registerBoolean("grindstone_into_books", false);
         TOMES_INCREASE_LEVEL = registerBoolean("tomes_increase_level", true);
         ONE_TO_ONE_LAPIS_COST = registerBoolean("one_to_one_lapis_cost", false);
         GOLD_GEAR_AUTO_REPAIRS = registerBoolean("gold_gear_auto_repairs", true);
